@@ -12,14 +12,14 @@ Teste
 
 ```bash
 cd helm
-helm template --namespace adsantos default-http-backend ./default-http-backend
+helm template --namespace ingress-nginx default-http-backend ./default-http-backend
 ```
 
 Pra valer
 
 ```bash
 cd helm
-helm install --namespace adsantos --create-namespace default-http-backend ./default-http-backend
+helm install --namespace ingress-nginx --create-namespace default-http-backend ./default-http-backend
 
 Release "default-http-backend" has been upgraded. Happy Helming!
 NAME: default-http-backend
@@ -38,19 +38,19 @@ NOTES:
 ### Atualizar
 
 ```bash
-helm upgrade --namespace adsantos default-http-backend ./default-http-backend
+helm upgrade --namespace ingress-nginx default-http-backend ./default-http-backend
 ```
 
 ### Excluir
 
 ```bash
-helm delete --namespace adsantos default-http-backend
+helm delete --namespace ingress-nginx default-http-backend
 ```
 
 Verificando
 
 ```bash
-kubectl get all -n adsantos
+kubectl get all -n ingress-nginx
 
 NAME                            READY   STATUS    RESTARTS   AGE
 pod/default-http-backend-64d4d4b788-kkc98   1/1     Running   0          13m
@@ -66,9 +66,9 @@ replicaset.apps/default-http-backend-64d4d4b788   1         1         1       13
 ```
 
 ```bash
-kubectl logs -f pod/default-http-backend-64d4d4b788-kkc98 -n adsantos # funciona até reiniciar o pod
+kubectl logs -f pod/default-http-backend-64d4d4b788-kkc98 -n ingress-nginx # funciona até reiniciar o pod
 
-kubectl logs -f -l app.kubernetes.io/name=default-http-backend -n adsantos # funciona sempre
+kubectl logs -f -l app.kubernetes.io/name=default-http-backend -n ingress-nginx # funciona sempre
 ```
 
 ### Executando o serviço

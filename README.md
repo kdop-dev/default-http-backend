@@ -9,17 +9,23 @@ flask run
 ```
 
 ```bash
-docker run -p 5000:5000 kdop/default-http-backend:0.0.1
+docker run -p 8000:80 kdop/default-http-backend:0.0.1
 ```
 
 ## Testing
 
-<http://127.0.0.1:5000/health>
+<http://127.0.0.1:8000/health>
 
-<http://127.0.0.1:5000/>
+<http://127.0.0.1:8000/>
 
 ## Helm
 
 ```bash
-helm upgrade --install --namespace adsantos --create-namespace default-http-backend default-http-backend
+helm upgrade --install --namespace ingress-nginx --create-namespace default-http-backend default-http-backend
+```
+
+## Change ingress-mginx default backend
+
+```bas
+kubectl edit deployment.apps/ingress-nginx-controller -n ingress-nginx
 ```

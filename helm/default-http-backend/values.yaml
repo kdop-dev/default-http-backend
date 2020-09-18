@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: kdop/default-backend
+  repository: kdop/default-http-backend
   pullPolicy: Always
   #pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -60,18 +60,18 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 200m
-    memory: 256Mi
+    cpu: 10m
+    memory: 96Mi
   requests:
-    cpu: 200m
-    memory: 256Mi
+    cpu: 5m
+    memory: 64Mi
 
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 95
 
 nodeSelector: {}
 

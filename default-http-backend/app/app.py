@@ -5,3 +5,7 @@ app = Flask(__name__, static_url_path='')
 @app.route('/')
 def root():
     return app.send_static_file('index2.html')
+
+@app.route("/health")
+def health():
+    return "I'm Ok!"
